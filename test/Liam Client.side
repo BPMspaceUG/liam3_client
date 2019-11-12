@@ -1,0 +1,858 @@
+{
+  "id": "ff56c320-f1b4-470c-95da-ec456f038209",
+  "version": "2.0",
+  "name": "Liam Client",
+  "url": "http://debian:43580",
+  "tests": [{
+    "id": "86a197b8-ee70-45b6-8ec6-e38e78170b5e",
+    "name": "Liam Client - Register - Email incorrect",
+    "commands": [{
+      "id": "0a1bf5d9-5ad7-4d8d-b35e-0bcaa4a6504a",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6134b7cc-d8b7-45f5-ab87-d964eb3e431b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2c46f11c-3663-418b-b2e8-d85d0029a825",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.form-submit:nth-child(5)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'LIAM2_Client_self_register.php')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2df89984-876c-41e0-90ea-96d2eee0744c",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return prompt(\"Enter Captcha\")",
+      "targets": [],
+      "value": "captcha"
+    }, {
+      "id": "bd2b479e-14f9-42c1-8f6f-56df62579134",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [],
+      "value": "${captcha}"
+    }, {
+      "id": "47bd0181-9286-433b-8d60-84ac9cf6bf06",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "268a50af-2c2e-4f27-90b7-5aa06cf5e0dd",
+      "comment": "",
+      "command": "click",
+      "target": "name=self_register",
+      "targets": [
+        ["name=self_register", "name"],
+        ["css=.form-submit", "css:finder"],
+        ["xpath=//input[@name='self_register']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0be4f3ac-5b11-45dc-a9a8-8e613168f30c",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='self_register_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "This Mail is incorrect!"
+    }]
+  }, {
+    "id": "77bb70b6-d1ca-4737-80b9-a873081b419a",
+    "name": "Liam Client - Register - Success",
+    "commands": [{
+      "id": "2a5d7886-ee93-4b99-a678-a260a498ed18",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "860aab72-b57e-476d-a011-4a7dae5729f4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "383ff2a3-dcf3-414c-bab0-381599245015",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.form-submit:nth-child(5)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'LIAM2_Client_self_register.php')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "52cce272-e3be-4235-94a0-08759b1cbfb8",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return prompt(\"Enter Captcha\")",
+      "targets": [],
+      "value": "captcha"
+    }, {
+      "id": "ea214465-4e11-467d-8d13-d47b48977ba5",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [],
+      "value": "${captcha}"
+    }, {
+      "id": "7d8e81fd-6dc2-48a7-b212-1e5919247407",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test2@localhost.com"
+    }, {
+      "id": "c11cfdde-73e0-445a-9402-4c94f37adae3",
+      "comment": "",
+      "command": "click",
+      "target": "name=self_register",
+      "targets": [
+        ["name=self_register", "name"],
+        ["css=.form-submit", "css:finder"],
+        ["xpath=//input[@name='self_register']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1ae5738-44ee-4115-ab30-040b147d6f5f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='self_register_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "A verification link has been sent to your email address."
+    }]
+  }, {
+    "id": "ec7a5c9b-7480-483e-9f0d-a3b6d84fb731",
+    "name": "Liam Client - Register - Email exists",
+    "commands": [{
+      "id": "9dc429df-c399-4249-afd3-89f38eab205c",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c5ff373-d708-4474-84f2-a1596044e926",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dacebff3-28ba-438c-8c3a-384d834f71b1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.form-submit:nth-child(5)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'LIAM2_Client_self_register.php')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9458858d-2f07-4a83-8642-fc183adbb3dc",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return prompt(\"Enter Captcha\")",
+      "targets": [],
+      "value": "captcha"
+    }, {
+      "id": "b3165f1b-8dac-4f0c-a77a-52232f7218a5",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [],
+      "value": "${captcha}"
+    }, {
+      "id": "65e8442b-eac7-48ce-971f-dd335a143e1e",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test2@localhost.com"
+    }, {
+      "id": "969f03a3-add6-4d2b-a4fd-52d10369259f",
+      "comment": "",
+      "command": "click",
+      "target": "name=self_register",
+      "targets": [
+        ["name=self_register", "name"],
+        ["css=.form-submit", "css:finder"],
+        ["xpath=//input[@name='self_register']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "16755092-3593-4f26-8012-a958e51e189a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='self_register_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "The Mail already exists!"
+    }]
+  }, {
+    "id": "40dd341c-1115-4180-96ee-75a3c52d4903",
+    "name": "Liam Client - Register - Captcha incorrect",
+    "commands": [{
+      "id": "ca463a79-d8bc-4f5e-9475-2b4002c2768a",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd3b3661-b33b-4ae0-9f63-3acce456e976",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad29827a-7905-4103-b255-bdba25780e97",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8ba0368f-44a7-4211-97ca-22dd7562ffd6",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "id=email",
+      "targets": [],
+      "value": "1000"
+    }, {
+      "id": "c250d54d-ce95-4650-8aaa-4cff98107295",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test2@localhost.com"
+    }, {
+      "id": "8b8468e4-ddaa-4d81-956a-9e63dfbc8136",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [],
+      "value": "123"
+    }, {
+      "id": "d79d9dca-8a45-4f25-93e9-e79cf6672c16",
+      "comment": "",
+      "command": "click",
+      "target": "name=self_register",
+      "targets": [
+        ["name=self_register", "name"],
+        ["css=.form-submit", "css:finder"],
+        ["xpath=//input[@name='self_register']", "xpath:attributes"],
+        ["xpath=//div[@id='self_register_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9a1ea7a-585e-4273-9217-10452f9eb6fc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='self_register_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "Wrong Captcha."
+    }]
+  }, {
+    "id": "e6fa56d7-f818-4e19-a869-aac1c6351ab0",
+    "name": "Liam Client - Login - Captcha incorrect",
+    "commands": [{
+      "id": "412f14a0-5098-4f20-9ebc-c8f5bae74c91",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f644382-f8be-4efe-b630-e466325ad488",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cf85f64c-4685-4ee6-b58b-006f35bf1d05",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "name=email",
+      "targets": [],
+      "value": "1000"
+    }, {
+      "id": "e9682113-669d-4fcd-933c-8a36bd9e7338",
+      "comment": "",
+      "command": "type",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.form-group:nth-child(1) > .form-control", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test@localhost.com"
+    }, {
+      "id": "8a1e8375-3b66-4e2c-993d-76e9caeccf42",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "1111111111"
+    }, {
+      "id": "d7b80180-1446-40b8-9021-74aba172ccb8",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [
+        ["name=result", "name"],
+        ["css=.col-sm-8", "css:finder"],
+        ["xpath=//input[@name='result']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[3]/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "d3bbdc0a-b103-439b-857d-8d5a1a6ac577",
+      "comment": "",
+      "command": "click",
+      "target": "name=liam2_login",
+      "targets": [
+        ["name=liam2_login", "name"],
+        ["css=.form-submit:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='liam2_login']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a2175ac-c75d-4a78-94b4-021eecdb09c6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "Wrong Captcha."
+    }]
+  }, {
+    "id": "dacdcf6e-6a7a-4f11-ba64-c55c047d3442",
+    "name": "Liam Client - Login - Email doesn't exist",
+    "commands": [{
+      "id": "389058d8-9761-41f9-9843-e0ad62ff2209",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5c5895b9-c6f8-464a-afb3-8d97dad0708f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e08c4d3e-6206-462a-bcdd-a8f0b2b85fec",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return prompt(\"Enter Captcha\")",
+      "targets": [],
+      "value": "captcha"
+    }, {
+      "id": "71970618-26a6-41f8-8ff9-fc8a85d0e240",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [
+        ["name=result", "name"],
+        ["css=.col-sm-8", "css:finder"],
+        ["xpath=//input[@name='result']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[3]/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "${captcha}"
+    }, {
+      "id": "8b77eb02-a600-45c5-972a-ed2c9bebe5df",
+      "comment": "",
+      "command": "type",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.form-group:nth-child(1) > .form-control", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test123@localhost.com"
+    }, {
+      "id": "4e7b6b75-78a6-4571-879b-8e399c03f0e3",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "1111111111"
+    }, {
+      "id": "b2367967-0d02-4acb-a966-bf4409ba8c37",
+      "comment": "",
+      "command": "click",
+      "target": "name=liam2_login",
+      "targets": [
+        ["name=liam2_login", "name"],
+        ["css=.form-submit:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='liam2_login']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "651a5163-5482-4b53-9ab1-38da14353f80",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "Wrong email"
+    }]
+  }, {
+    "id": "3027aa65-b3f7-44ce-87c6-b0a6296c3702",
+    "name": "Liam Client - Login - Password incorrect",
+    "commands": [{
+      "id": "bb0fe851-ce56-444d-8f8b-8dfee2e79454",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1eae7357-9abb-4bdc-bdd6-10a0e74ae678",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "837031f0-8af1-4e50-ac08-13f90965785f",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return prompt(\"Enter Captcha\")",
+      "targets": [],
+      "value": "captcha"
+    }, {
+      "id": "58fc859a-f592-4b08-a7d0-1b5c132cbc36",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [
+        ["name=result", "name"],
+        ["css=.col-sm-8", "css:finder"],
+        ["xpath=//input[@name='result']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[3]/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "${captcha}"
+    }, {
+      "id": "ef334b16-6d0a-49d6-bea1-bfbb6205b034",
+      "comment": "",
+      "command": "type",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.form-group:nth-child(1) > .form-control", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test@localhost.com"
+    }, {
+      "id": "aa5ec4f0-3e8c-421a-a344-4f0955a8c8a6",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "be81cecc-836b-4e88-be4a-8f19375c7544",
+      "comment": "",
+      "command": "click",
+      "target": "name=liam2_login",
+      "targets": [
+        ["name=liam2_login", "name"],
+        ["css=.form-submit:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='liam2_login']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7ccc072-121c-43c4-9954-c9b5cfd23da1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "Wrong password."
+    }]
+  }, {
+    "id": "cc431435-1585-47eb-bed7-8b10111831d3",
+    "name": "Liam Client - Login - Success",
+    "commands": [{
+      "id": "6e2e079e-5a56-4367-957f-a66ff41395e8",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "51eeb54a-d897-437c-9341-5963d04f789e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec545f6e-5ca9-4680-a59e-093d2dc3fe2a",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return prompt(\"Enter Captcha\")",
+      "targets": [],
+      "value": "captcha"
+    }, {
+      "id": "06c40112-5fb5-458d-a8ed-9bcda5200856",
+      "comment": "",
+      "command": "type",
+      "target": "name=result",
+      "targets": [
+        ["name=result", "name"],
+        ["css=.col-sm-8", "css:finder"],
+        ["xpath=//input[@name='result']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[3]/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "${captcha}"
+    }, {
+      "id": "c7680c5c-7082-4de5-aa9b-7433d8219779",
+      "comment": "",
+      "command": "type",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.form-group:nth-child(1) > .form-control", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test@localhost.com"
+    }, {
+      "id": "776b5275-4d49-44e4-a051-ceb349423100",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "1111111111"
+    }, {
+      "id": "a280ad69-66d6-4b6f-be93-8f639bea53d7",
+      "comment": "",
+      "command": "click",
+      "target": "name=liam2_login",
+      "targets": [
+        ["name=liam2_login", "name"],
+        ["css=.form-submit:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='liam2_login']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "55eca6a8-c3e6-4175-8ff4-974a83ff4bbf",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//h2[contains(.,'Welcome')]",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//div[@id='liam2_main_modal']/div/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Welcome Test Test')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a98a19e3-ccdb-4b02-8b4c-0a0ec9c8a480",
+    "name": "Liam Client - Reset Password - Email doesn't exist",
+    "commands": [{
+      "id": "920e066d-a140-4b74-9644-7e63461de11c",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2bf2efeb-bf1a-4bba-a138-c167db3f97d8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7cf0b67a-4dd5-4955-b572-7685ecbc01e5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Forgot password",
+      "targets": [
+        ["linkText=Forgot password", "linkText"],
+        ["css=.form-submit:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Forgot password')]", "xpath:link"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'LIAM2_Client_forgot_password.php')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Forgot password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8de31f5c-b864-44cb-81e2-9da492c71f78",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "id=email",
+      "targets": [],
+      "value": "1000"
+    }, {
+      "id": "47cf1544-d7f4-4827-96b4-284523bcab10",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_forgot_password_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "73aaf427-bbae-44b1-998a-71577e7d2d29",
+      "comment": "",
+      "command": "click",
+      "target": "name=forgot_password",
+      "targets": [
+        ["name=forgot_password", "name"],
+        ["css=.form-submit", "css:finder"],
+        ["xpath=//input[@name='forgot_password']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_forgot_password_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "35eec6b1-56e5-4df6-8e19-57881e0f9fca",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='liam2_forgot_password_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "There is no registered user with this email address"
+    }]
+  }, {
+    "id": "486c8bc0-b776-4404-ab08-b27875482cd5",
+    "name": "Liam Client - Reset Password - Success",
+    "commands": [{
+      "id": "155c5c2e-a58c-491a-b70d-9e36b4b508fe",
+      "comment": "",
+      "command": "open",
+      "target": "/LIAM2_Client_login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2d5eb930-a8f8-4222-87d4-8a61b3dcd221",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f6f140d5-3001-4b3f-93ba-057c34357cc7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Forgot password",
+      "targets": [
+        ["linkText=Forgot password", "linkText"],
+        ["css=.form-submit:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Forgot password')]", "xpath:link"],
+        ["xpath=//div[@id='liam2_login_modal']/div/div/form/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'LIAM2_Client_forgot_password.php')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Forgot password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03e8c75c-2217-41bb-967f-dd115237837a",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "id=email",
+      "targets": [],
+      "value": "1000"
+    }, {
+      "id": "2f32c836-cfa9-4868-b58f-6aa074fe16ce",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_forgot_password_modal']/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test@localhost.com"
+    }, {
+      "id": "67e99c21-9e8a-46b6-8b4f-febaa39ac535",
+      "comment": "",
+      "command": "click",
+      "target": "name=forgot_password",
+      "targets": [
+        ["name=forgot_password", "name"],
+        ["css=.form-submit", "css:finder"],
+        ["xpath=//input[@name='forgot_password']", "xpath:attributes"],
+        ["xpath=//div[@id='liam2_forgot_password_modal']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b153f95-1463-408b-86b3-c5bc59b13354",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert",
+      "targets": [
+        ["css=.alert", "css:finder"],
+        ["xpath=//div[@id='liam2_forgot_password_modal']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "Password reset link sent to email."
+    }]
+  }],
+  "suites": [{
+    "id": "1a3bd7d0-161a-481f-a51a-794b9311b56c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["86a197b8-ee70-45b6-8ec6-e38e78170b5e"]
+  }],
+  "urls": ["http://debian:43580/"],
+  "plugins": []
+}
