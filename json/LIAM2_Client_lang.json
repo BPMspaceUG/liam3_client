@@ -9,7 +9,7 @@
 	},
 	"LIAM2 CLIENT password reset email": {
 		"en": {"name": "English", "text": "<a href=$link>Click here to reset your password</a>"},
-		"de": {"name": "Deutsch", "text": "<a href=$link>Click here to reset your password</a>"}
+		"de": {"name": "Deutsch", "text": "<a href=$link>Klicken Sie hier um Ihr Passwort zurück zu setzten</a>"}
 	},
 	"Example replace pattern": {
 		"en": {"name": "English", "text": "Example text"},
