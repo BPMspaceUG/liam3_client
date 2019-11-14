@@ -66,7 +66,7 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
             $result = api(json_encode(array(
                 "cmd" => "create",
                 "param" => array(
-                    "table" => "liam3_User_email",
+                    "table" => "liam3_user_email",
                     "row" => [
                         "liam3_User_id_fk_164887" => $user_id,
                         "liam3_email_id_fk_396224" => $email_id
@@ -147,9 +147,9 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
         $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
-                "table" => "liam3_User_email",
+                "table" => "liam3_user_email",
                 "row" => [
-                    "liam3_User_email_id" => $user_email_id,
+                    "liam3_user_email_id" => $user_email_id,
                     "state_id" => 11
                 ]
             )
@@ -161,9 +161,9 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
         $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
-                "table" => "liam3_User_email",
+                "table" => "liam3_user_email",
                 "row" => [
-                    "liam3_User_email_id" => $user_email_id,
+                    "liam3_user_email_id" => $user_email_id,
                     "state_id" => 12
                 ]
             )
@@ -179,9 +179,9 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
         $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
-                "table" => "liam3_User_email",
+                "table" => "liam3_user_email",
                 "row" => [
-                    "liam3_User_email_id" => $user_email_id,
+                    "liam3_user_email_id" => $user_email_id,
                     "state_id" => 12
                 ]
             )
@@ -191,9 +191,9 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
             $result = api(json_encode(array(
                 "cmd" => "makeTransition",
                 "param" => array(
-                    "table" => "liam3_User_email",
+                    "table" => "liam3_user_email",
                     "row" => [
-                        "liam3_User_email_id" => $user_email_id,
+                        "liam3_user_email_id" => $user_email_id,
                         "state_id" => 11
                     ]
                 )
@@ -235,7 +235,7 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
     $user_emails = json_decode(api(json_encode(array(
         "cmd" => "read",
         "param" => array(
-            "table" => "liam3_User_email",
+            "table" => "liam3_user_email",
             "where" => "liam3_User_id = $_SESSION[user_id]"
         )
     ))), true);

@@ -10,7 +10,7 @@ if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
     $user_email = json_decode(api(json_encode(array(
         "cmd" => "read",
         "param" => array(
-            "table" => "liam3_User_email",
+            "table" => "liam3_user_email",
             "where" => "liam3_email_text = '$email_input' && a.state_id = 11"
         )
     ))), true);
@@ -48,7 +48,7 @@ if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
         $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
-                "table" => "liam3_User",
+                "table" => "liam3_user",
                 "row" => array(
                     "liam3_User_id" => $user_email[0]['liam3_User_id_fk_164887']['liam3_User_id'],
                     "liam3_client_passwd_reset" => true,

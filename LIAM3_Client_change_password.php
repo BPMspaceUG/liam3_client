@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
         $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
-                "table" => "liam3_User",
+                "table" => "liam3_user",
                 "row" => array(
                     "liam3_User_id" => $_SESSION['user_id'],
                     "state_id" => 9
@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
         $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
-                "table" => "liam3_User",
+                "table" => "liam3_user",
                 "row" => array(
                     "liam3_User_id" => $_SESSION['user_id'],
                     "liam3_User_password_old" => htmlspecialchars($_POST['liam3_User_password_old']),

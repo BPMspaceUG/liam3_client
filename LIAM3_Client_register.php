@@ -31,7 +31,7 @@ if (!isset($_GET['token'])) {
         $result = api(json_encode(array(
                 "cmd" => "create",
                 "param" => array(
-                    "table" => "liam3_User",
+                    "table" => "liam3_user",
                     "row" => array(
                         "liam3_User_firstname" => htmlspecialchars($_POST['firstname']),
                         "liam3_User_lastname" => htmlspecialchars($_POST['lastname']),

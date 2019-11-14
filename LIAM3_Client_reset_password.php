@@ -33,7 +33,7 @@ if (!isset($_GET['token'])) {
         $result = json_decode(api(json_encode(array(
             "cmd" => "read",
             "param" => array(
-                "table" => "liam3_User",
+                "table" => "liam3_user",
                 "where" => "liam3_User_id = $user_id && a.state_id = 8"
             )
         ))), true);
@@ -46,7 +46,7 @@ if (!isset($_GET['token'])) {
             $result = api(json_encode(array(
                 "cmd" => "makeTransition",
                 "param" => array(
-                    "table" => "liam3_User",
+                    "table" => "liam3_user",
                     "row" => array(
                         "liam3_User_id" => $user_id,
                         "liam3_User_password_new" => htmlspecialchars($_POST['liam3_User_password_new']),

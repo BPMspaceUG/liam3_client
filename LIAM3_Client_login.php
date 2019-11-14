@@ -23,10 +23,10 @@ if (isset($_POST['liam3_login'])) {
                 $result = api(json_encode(array(
                         "cmd" => "create",
                         "param" => array(
-                            "table" => "liam3_LoginAttempts",
+                            "table" => "liam3_loginattempts",
                             "row" => array(
-                                "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                "liam3_LoginAttempts_info" => $login_attempt_info
+                                "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                "liam3_loginattempts_info" => $login_attempt_info
                             )
                         )
                     )
@@ -59,10 +59,10 @@ if (isset($_POST['liam3_login'])) {
                     $result = api(json_encode(array(
                             "cmd" => "create",
                             "paramparam" => array(
-                                "table" => "liam3_LoginAttempts",
+                                "table" => "liam3_loginattempts",
                                 "row" => array(
-                                    "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                    "liam3_LoginAttempts_info" => $login_attempt_info
+                                    "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                    "liam3_loginattempts_info" => $login_attempt_info
                                 )
                             )
                         )
@@ -75,10 +75,10 @@ if (isset($_POST['liam3_login'])) {
                     $result = api(json_encode(array(
                             "cmd" => "create",
                             "param" => array(
-                                "table" => "liam3_LoginAttempts",
+                                "table" => "liam3_loginattempts",
                                 "row" => array(
-                                    "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                    "liam3_LoginAttempts_info" => $login_attempt_info
+                                    "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                    "liam3_loginattempts_info" => $login_attempt_info
                                 )
                             )
                         )
@@ -96,10 +96,10 @@ if (isset($_POST['liam3_login'])) {
                         $result = api(json_encode(array(
                                 "cmd" => "create",
                                 "param" => array(
-                                    "table" => "liam3_LoginAttempts",
+                                    "table" => "liam3_loginattempts",
                                     "row" => array(
-                                        "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                        "liam3_LoginAttempts_info" => $login_attempt_info
+                                        "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                        "liam3_loginattempts_info" => $login_attempt_info
                                     )
                                 )
                             )
@@ -116,10 +116,10 @@ if (isset($_POST['liam3_login'])) {
                         $result = api(json_encode(array(
                                 "cmd" => "create",
                                 "param" => array(
-                                    "table" => "liam3_LoginAttempts",
+                                    "table" => "liam3_loginattempts",
                                     "row" => array(
-                                        "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                        "liam3_LoginAttempts_info" => $login_attempt_info
+                                        "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                        "liam3_loginattempts_info" => $login_attempt_info
                                     )
                                 )
                             )
@@ -131,10 +131,10 @@ if (isset($_POST['liam3_login'])) {
                         $result = api(json_encode(array(
                                 "cmd" => "create",
                                 "param" => array(
-                                    "table" => "liam3_LoginAttempts",
+                                    "table" => "liam3_loginattempts",
                                     "row" => array(
-                                        "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                        "liam3_LoginAttempts_info" => $login_attempt_info
+                                        "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                        "liam3_loginattempts_info" => $login_attempt_info
                                     )
                                 )
                             )
@@ -150,10 +150,10 @@ if (isset($_POST['liam3_login'])) {
                         $result = api(json_encode(array(
                                 "cmd" => "create",
                                 "param" => array(
-                                    "table" => "liam3_LoginAttempts",
+                                    "table" => "liam3_loginattempts",
                                     "row" => array(
-                                        "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                        "liam3_LoginAttempts_info" => $login_attempt_info
+                                        "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                        "liam3_loginattempts_info" => $login_attempt_info
                                     )
                                 )
                             )
@@ -164,10 +164,10 @@ if (isset($_POST['liam3_login'])) {
                         $result = api(json_encode(array(
                                 "cmd" => "create",
                                 "param" => array(
-                                    "table" => "liam3_LoginAttempts",
+                                    "table" => "liam3_loginattempts",
                                     "row" => array(
-                                        "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
-                                        "liam3_LoginAttempts_info" => $login_attempt_info
+                                        "liam3_loginattempts_time" => date('Y-m-d H:i'),
+                                        "liam3_loginattempts_info" => $login_attempt_info
                                     )
                                 )
                             )
