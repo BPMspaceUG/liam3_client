@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM2_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/captcha/captcha.inc.php');
-require_once(__DIR__ . '/inc/LIAM2_Client_translate.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_translate.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/JWT.inc.php');
 use \Firebase\JWT\JWT;
 if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['email_id'])) {
@@ -26,10 +26,10 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
         } else {
             $result = api(json_encode(array(
                     "cmd" => "create",
-                    "paramJS" => array(
-                        "table" => "liam2_email",
+                    "param" => array(
+                        "table" => "liam3_email",
                         "row" => array(
-                            "liam2_email_text" => $email
+                            "liam3_email_text" => $email
                         )
                     )
                 )
@@ -38,15 +38,15 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
         }
         if (count($result) > 1) {
             if ($email_id) {
-                $check_email = json_decode(api(json_encode(array("cmd" => "read", "paramJS" => array("table" => "liam2_email",
-                    "where" => "liam2_email_id = $email_id && a.state_id = 13")))), true);
+                $check_email = json_decode(api(json_encode(array("cmd" => "read", "param" => array("table" => "liam2_email",
+                    "where" => "liam3_email_id = $email_id && a.state_id = 13")))), true);
                 if (!$check_email) $error = 'This email is already verified or blocked.';
             }
             if (!isset($error)) {
                 if (!$email_id) $email_id = $result[1]['element_id'];
                 $jwt_key = AUTH_KEY;
                 $jwt_token = array(
-                    "iss" => "liam2",
+                    "iss" => "liam3",
                     "aud" => $email_id,
                     "iat" => time(),
                     "exp" => time() + 10800
@@ -69,8 +69,8 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
                 } else {
                     $server_port = ':' . $_SERVER['SERVER_PORT'];
                 }
-                $link = "http://" . $_SERVER['SERVER_NAME'] . $server_port . "/LIAM2_Client_register.php?token=" . $jwt . "&origin=" . $origin . $user_info;
-                $msg = translate('LIAM2 CLIENT Self registration email', 'en');
+                $link = "http://" . $_SERVER['SERVER_NAME'] . $server_port . "/LIAM3_Client_register.php?token=" . $jwt . "&origin=" . $origin . $user_info;
+                $msg = translate('LIAM3 CLIENT Self registration email', 'en');
                 $msg = str_replace('$link', $link, $msg);
                 // Format and Send Mail
                 $msg = wordwrap($msg, 70);
@@ -88,5 +88,5 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
     }
 }
 generateImage($expression->n1.' + '.$expression->n2.' =', $captchaImage);
-require_once(__DIR__ . '/inc/LIAM2_Client_header.inc.php');
-require_once(__DIR__ . '/inc/templates/LIAM2_Client_self_register.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/templates/LIAM3_Client_self_register.inc.php');

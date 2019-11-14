@@ -1,13 +1,13 @@
 {
-	"LIAM2 CLIENT Self registration email": {
+	"LIAM3 CLIENT Self registration email": {
 		"en": {"name": "English", "text": "Hello, First line of text \n Second line of text <a href=$link>Click here to confirm your email</a>"},
 		"de": {"name": "Deutsch", "text": "Hello, First line of text \n Second line of text <a href=$link>Click here to confirm your email</a>"}
 	},
-	"LIAM2 CLIENT verify email": {
+	"LIAM3 CLIENT verify email": {
 		"en": {"name": "English", "text": "Please verify your mail - <a href=$link>Click here to verify your email</a>"},
 		"de": {"name": "Deutsch", "text": "Please verify your mail - <a href=$link>Click here to verify your email</a>"}
 	},
-	"LIAM2 CLIENT password reset email": {
+	"LIAM3 CLIENT password reset email": {
 		"en": {"name": "English", "text": "<a href=$link>Click here to reset your password</a>"},
 		"de": {"name": "Deutsch", "text": "<a href=$link>Klicken Sie hier um Ihr Passwort zurück zu setzten</a>"}
 	},

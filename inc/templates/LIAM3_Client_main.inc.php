@@ -1,4 +1,4 @@
-<div class="modal fade" id="liam2_main_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="liam3_main_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -9,9 +9,9 @@
                                 <i class="far fa-user fa-2x"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="LIAM2_Client_change_password.php">Change password</a>
-                                <a class="dropdown-item" href="LIAM2_Client_manage_emails.php">Manage E-Mails</a>
-                                <a class="dropdown-item" href="LIAM2_Client_logout.php">Logout</a>
+                                <a class="dropdown-item" href="LIAM3_Client_change_password.php">Change password</a>
+                                <a class="dropdown-item" href="LIAM3_Client_manage_emails.php">Manage E-Mails</a>
+                                <a class="dropdown-item" href="LIAM3_Client_logout.php">Logout</a>
                             </div>
                         </li>
                     </ul>

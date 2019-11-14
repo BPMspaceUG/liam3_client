@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM2_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.php');
@@ -30,13 +30,13 @@ if (!isset($_GET['token'])) {
         $password = trim(htmlspecialchars($_POST['password']));
         $result = api(json_encode(array(
                 "cmd" => "create",
-                "paramJS" => array(
-                    "table" => "liam2_User",
+                "param" => array(
+                    "table" => "liam3_User",
                     "row" => array(
-                        "liam2_User_firstname" => htmlspecialchars($_POST['firstname']),
-                        "liam2_User_lastname" => htmlspecialchars($_POST['lastname']),
-                        "liam2_User_password" => $password,
-                        "liam2_User_email_id" => $email_id
+                        "liam3_User_firstname" => htmlspecialchars($_POST['firstname']),
+                        "liam3_User_lastname" => htmlspecialchars($_POST['lastname']),
+                        "liam3_User_password" => $password,
+                        "liam3_User_email_id" => $email_id
                     )
                 )
             )
@@ -47,10 +47,10 @@ if (!isset($_GET['token'])) {
 
             $result = api(json_encode(array(
                     "cmd" => "makeTransition",
-                    "paramJS" => array(
-                        "table" => "liam2_email",
+                    "param" => array(
+                        "table" => "liam3_email",
                         "row" => array(
-                            "liam2_email_id" => $email_id,
+                            "liam3_email_id" => $email_id,
                             "state_id" => 14
                         )
                     )
@@ -80,10 +80,10 @@ if (!isset($_GET['token'])) {
     /*} else {
         $result = api(json_encode(array(
                 "cmd" => "makeTransition",
-                "paramJS" => array(
-                    "table" => "liam2_email",
+                "param" => array(
+                    "table" => "liam3_email",
                     "row" => array(
-                        "liam2_email_id" => $email_id,
+                        "liam3_email_id" => $email_id,
                         "state_id" => 14
                     )
                 )
@@ -104,13 +104,13 @@ if (!isset($_GET['token'])) {
     }
     if (isset($_GET['firstname']) || isset($_GET['lastname'])) $show_form = true;
     if (!isset($_POST['register'])) {
-        $check_email = json_decode(api(json_encode(array("cmd" => "read", "paramJS" => array("table" => "liam2_email",
-            "where" => "liam2_email_id = $email_id && a.state_id != 13")))), true);
+        $check_email = json_decode(api(json_encode(array("cmd" => "read", "param" => array("table" => "liam3_email",
+            "where" => "liam3_email_id = $email_id && a.state_id != 13")))), true);
         if ($check_email) {
             $show_form = false;
             $error = 'This email is already verified or blocked.';
         }
     }
 }
-require_once(__DIR__ . '/inc/LIAM2_Client_header.inc.php');
-require_once(__DIR__ . '/inc/templates/LIAM2_Client_register.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/templates/LIAM3_Client_register.inc.php');

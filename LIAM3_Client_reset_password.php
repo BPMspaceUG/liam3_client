@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM2_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.php');
@@ -32,9 +32,9 @@ if (!isset($_GET['token'])) {
         $user_id = $decoded->aud;
         $result = json_decode(api(json_encode(array(
             "cmd" => "read",
-            "paramJS" => array(
-                "table" => "liam2_User",
-                "where" => "liam2_User_id = $user_id && a.state_id = 8"
+            "param" => array(
+                "table" => "liam3_User",
+                "where" => "liam3_User_id = $user_id && a.state_id = 8"
             )
         ))), true);
         if ($result) {
@@ -42,16 +42,16 @@ if (!isset($_GET['token'])) {
             $show_form = false;
             $show_login_button = true;
         }
-        if (isset($_POST['liam2_reset_password'])) {
+        if (isset($_POST['liam3_reset_password'])) {
             $result = api(json_encode(array(
                 "cmd" => "makeTransition",
-                "paramJS" => array(
-                    "table" => "liam2_User",
+                "param" => array(
+                    "table" => "liam3_User",
                     "row" => array(
-                        "liam2_User_id" => $user_id,
-                        "liam2_User_password_new" => htmlspecialchars($_POST['liam2_User_password_new']),
-                        "liam2_User_password_new_confirm" => htmlspecialchars($_POST['liam2_User_password_new_confirm']),
-                        "liam2_client_passwd_reset_form" => true,
+                        "liam3_User_id" => $user_id,
+                        "liam3_User_password_new" => htmlspecialchars($_POST['liam3_User_password_new']),
+                        "liam3_User_password_new_confirm" => htmlspecialchars($_POST['liam3_User_password_new_confirm']),
+                        "liam3_client_passwd_reset_form" => true,
                         "state_id" => 8
                     )
                 )
@@ -67,5 +67,5 @@ if (!isset($_GET['token'])) {
         }
     }
 }
-require_once(__DIR__ . '/inc/LIAM2_Client_header.inc.php');
-require_once(__DIR__ . '/inc/templates/LIAM2_Client_reset_password.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/templates/LIAM3_Client_reset_password.inc.php');

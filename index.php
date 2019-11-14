@@ -1,13 +1,13 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM2_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/JWT.inc.php');
 use \Firebase\JWT\JWT;
 if (!isset($_SESSION['token'])) {
     if (!isset($_GET['origin'])) {
-        header("Location: LIAM2_Client_login.php");
+        header("Location: LIAM3_Client_login.php");
         exit();
     } else {
-        header("Location: LIAM2_Client_login.php?origin=" . $_GET['origin']);
+        header("Location: LIAM3_Client_login.php?origin=" . $_GET['origin']);
         exit();
     }
 } else {
@@ -38,6 +38,6 @@ if (!isset($_SESSION['token'])) {
 
     $username = $user["records"][0]['liam3_User_firstname'] . ' ' . $user["records"][0]['liam3_User_lastname'];
    
-    require_once(__DIR__ . '/inc/LIAM2_Client_header.inc.php');
-    require_once(__DIR__ . '/inc/templates/LIAM2_Client_main.inc.php');
+    require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+    require_once(__DIR__ . '/inc/templates/LIAM3_Client_main.inc.php');
 }

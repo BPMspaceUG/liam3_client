@@ -1,4 +1,4 @@
-<div class="modal fade" id="liam2_login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="liam3_login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <?php if (isset($error) && $error) { ?>
@@ -26,9 +26,9 @@
                     <img src="<?php echo $captchaImage; ?>" class="captcha-image col-lg-4 col-sm-4" />
                     <input type="text" name="result" class="form-control col-lg-4 col-sm-8" autocomplete="off" required />
                 </div>
-                <a class="form-submit btn btn-primary" href="LIAM2_Client_forgot_password.php">Forgot password</a>
-                <a class="form-submit btn btn-primary" href="LIAM2_Client_self_register.php">Register</a>
-                <input type="submit" class="form-submit btn btn-primary" value="Login" name="liam2_login" />
+                <a class="form-submit btn btn-primary" href="LIAM3_Client_forgot_password.php">Forgot password</a>
+                <a class="form-submit btn btn-primary" href="LIAM3_Client_self_register.php">Register</a>
+                <input type="submit" class="form-submit btn btn-primary" value="Login" name="liam3_login" />
             </form>
         </div>
     </div>

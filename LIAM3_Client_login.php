@@ -1,11 +1,11 @@
 <?php
-require_once(__DIR__ . '/inc/liam2_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/captcha/captcha.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/JWT.inc.php');
-require_once(__DIR__ . '/inc/liam2_Client_header.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 use \Firebase\JWT\JWT;
 generateImage($expression->n1.' + '.$expression->n2.' =', $captchaImage);
-if (isset($_POST['liam2_login'])) {
+if (isset($_POST['liam3_login'])) {
     if (file_exists($_POST['captcha-image'])) unlink($_POST['captcha-image']);
     if (!$_POST['email'] || !$_POST['password']) {
         $error = 'Please fill all the fields.';
@@ -197,5 +197,5 @@ if (isset($_SESSION['token'])) {
     header("Location: index.php");
     exit();
 } else {
-    require_once(__DIR__ . '/inc/templates/liam2_Client_login.inc.php');
+    require_once(__DIR__ . '/inc/templates/LIAM3_Client_login.inc.php');
 }

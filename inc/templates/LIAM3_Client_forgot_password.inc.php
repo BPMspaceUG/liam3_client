@@ -1,4 +1,4 @@
-<div class="modal fade" id="liam2_forgot_password_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="liam3_forgot_password_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <?php if (isset($error)) : ?>
@@ -6,7 +6,7 @@
             <?php endif; ?>
             <?php if (isset($success)) : ?>
                 <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
-                <a class="form-submit btn btn-primary" href="LIAM2_Client_forgot_password.php?email=<?php echo $email_input; ?>">Resend Email</a>
+                <a class="form-submit btn btn-primary" href="LIAM3_Client_forgot_password.php?email=<?php echo $email_input; ?>">Resend Email</a>
             <?php endif; ?>
             <?php if ($show_form) : ?>
             <h2>Reset password</h2>

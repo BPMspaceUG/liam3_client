@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM2_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.php');
@@ -27,10 +27,10 @@ if (!isset($_GET['token'])) {
     $email_id = $decoded->aud;
     $result = api(json_encode(array(
             "cmd" => "makeTransition",
-            "paramJS" => array(
-                "table" => "liam2_email",
+            "param" => array(
+                "table" => "liam3_email",
                 "row" => array(
-                    "liam2_email_id" => $email_id,
+                    "liam3_email_id" => $email_id,
                     "state_id" => 14
                 )
             )
@@ -49,5 +49,5 @@ if (!isset($_GET['token'])) {
         }
     }
 }
-require_once(__DIR__ . '/inc/LIAM2_Client_header.inc.php');
-require_once(__DIR__ . '/inc/templates/LIAM2_Client_verify.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/templates/LIAM3_Client_verify.inc.php');
