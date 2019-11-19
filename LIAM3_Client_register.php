@@ -10,7 +10,6 @@ if (!isset($_GET['token'])) {
     $error = 'No token.';
 } else {
     $jwt = $_GET['token'];
-    $jwt_key = AUTH_KEY;
 
     /**
      * You can add a leeway to account for when there is a clock skew times between
@@ -21,14 +20,36 @@ if (!isset($_GET['token'])) {
      */
     JWT::$leeway = 60; // $leeway in seconds
     try {
-        $decoded = JWT::decode($jwt, $jwt_key, array('HS256'));
+        $decoded = JWT::decodeWithoutKey($jwt, array('HS256'));
         $email_id = $decoded->aud;
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
     if (isset($_POST['register'])) {
         $password = trim(htmlspecialchars($_POST['password']));
-        $result = api(json_encode(array(
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $lastname = htmlspecialchars($_POST['lastname']);
+        $register = api(json_encode(array("cmd" => "register", "param" => array(
+            "email_id" => $email_id,
+            "password" => $password,
+            "firstname" => $firstname,
+            "lastname" => $lastname
+        ))));
+        $register = json_decode($register, true);
+        if (isset($register['error']['msg'])) {
+            $error = $register['error']['msg'];
+        } else if (isset($register['showForm'])) {
+            $show_form = true;
+            if (isset($register['message'])) {
+                $error = $register['message'];
+            } else {
+                $success = 'Success.';
+            }
+        } else {
+            $success = 'Success.';
+        }
+
+        /*$result = api(json_encode(array(
                 "cmd" => "create",
                 "param" => array(
                     "table" => "liam3_user",
@@ -76,7 +97,7 @@ if (!isset($_GET['token'])) {
         } else {
             $error = $result[0]['message'];
             $show_form = true;
-        }
+        }*/
     /*} else {
         $result = api(json_encode(array(
                 "cmd" => "makeTransition",
@@ -104,11 +125,16 @@ if (!isset($_GET['token'])) {
     }
     if (isset($_GET['firstname']) || isset($_GET['lastname'])) $show_form = true;
     if (!isset($_POST['register'])) {
-        $check_email = json_decode(api(json_encode(array("cmd" => "read", "param" => array("table" => "liam3_email",
-            "where" => "liam3_email_id = $email_id && a.state_id != 13")))), true);
-        if ($check_email) {
+        $register = api(json_encode(array("cmd" => "register", "param" => array(
+            "check_email" => true,
+            "email_id" => $email_id
+        ))));
+        $register = json_decode($register, true);
+        if (isset($register['error']['msg'])) {
             $show_form = false;
-            $error = 'This email is already verified or blocked.';
+            $error = $register['error']['msg'];
+        } else {
+            $show_form = true;
         }
     }
 }

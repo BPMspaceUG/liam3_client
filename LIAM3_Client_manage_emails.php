@@ -98,7 +98,7 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
                 "cmd" => "read",
                 "param" => array(
                     "table" => "liam3_email",
-                    "where" => "liam3_email_id = $email_id"
+                    "filter" => '{"=":["liam3_email_id", '.$email_id.']}'
                 )
             )));
             $result2 = json_decode($result2, true);
@@ -205,7 +205,7 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
                 "cmd" => "read",
                 "param" => array(
                     "table" => "liam3_email",
-                    "where" => "liam3_email_id = $email_id"
+                    "filter" => '{"=":["liam3_email_id", '.$email_id.']}'
                 )
             )));
             $result = json_decode($result, true);
@@ -236,7 +236,7 @@ if (!isset($_SESSION['user_id']) && !isset($_GET['liam3_add_another_email'])) {
         "cmd" => "read",
         "param" => array(
             "table" => "liam3_user_email",
-            "where" => "liam3_User_id = $_SESSION[user_id]"
+            "filter" => '{"=":["liam3_User_id", '.$_SESSION["user_id"].']}'
         )
     ))), true);
     $selected_user_emails = array();
