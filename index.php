@@ -21,7 +21,6 @@ if (!isset($_SESSION['token'])) {
     )), true);
     */
     //$user = JWT::decode()
-
     $jwt = $_SESSION['token'];
     $tks = explode('.', $jwt);
     list($headb64, $bodyb64, $cryptob64) = $tks;
@@ -34,10 +33,7 @@ if (!isset($_SESSION['token'])) {
             "filter" => '{"=":["liam3_User_id", '.$payload->uid.']}'
         ))
     )), true);
-
-
     $username = $user["records"][0]['liam3_User_firstname'] . ' ' . $user["records"][0]['liam3_User_lastname'];
-   
     require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
     require_once(__DIR__ . '/inc/templates/LIAM3_Client_main.inc.php');
 }

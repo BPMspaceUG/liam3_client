@@ -53,41 +53,6 @@ if (!isset($_GET['token'])) {
                 $show_login_button = true;
             }
         }
-        /*$result = json_decode(api(json_encode(array(
-            "cmd" => "read",
-            "param" => array(
-                "table" => "liam3_user",
-                "where" => "liam3_User_id = $user_id && a.state_id = 8"
-            )
-        ))), true);
-        if ($result) {
-            $error = "This link was already used. If you need to reset your passwort again, please click on the button \"Forgot passwort\" in the LogIn form.";
-            $show_form = false;
-            $show_login_button = true;
-        }
-        if (isset($_POST['liam3_reset_password'])) {
-            $result = api(json_encode(array(
-                "cmd" => "makeTransition",
-                "param" => array(
-                    "table" => "liam3_user",
-                    "row" => array(
-                        "liam3_User_id" => $user_id,
-                        "liam3_User_password_new" => htmlspecialchars($_POST['liam3_User_password_new']),
-                        "liam3_User_password_new_confirm" => htmlspecialchars($_POST['liam3_User_password_new_confirm']),
-                        "liam3_client_passwd_reset_form" => true,
-                        "state_id" => 8
-                    )
-                )
-            )));
-            $result = json_decode($result, true);
-            if (count($result) > 2) {
-                $success = $result[0]['message'];
-                $show_form = false;
-                $show_login_button = true;
-            } else {
-                $error = $result[0]['message'];
-            }
-        }*/
     }
 }
 require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
