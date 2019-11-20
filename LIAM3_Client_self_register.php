@@ -39,6 +39,7 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
         $selfRegister = json_decode($selfRegister, true);
         if (isset($selfRegister['message'])) {
             $success = $selfRegister['message'];
+            $email_id = $selfRegister['email_id'];
         } else {
             $error = $selfRegister['error']['msg'];
         }

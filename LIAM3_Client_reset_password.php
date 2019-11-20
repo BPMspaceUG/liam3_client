@@ -11,7 +11,6 @@ if (!isset($_GET['token'])) {
     $show_form = false;
 } else {
     $jwt = $_GET['token'];
-    $jwt_key = AUTH_KEY;
 
     /**
      * You can add a leeway to account for when there is a clock skew times between
@@ -22,7 +21,7 @@ if (!isset($_GET['token'])) {
      */
     JWT::$leeway = 60; // $leeway in seconds
     try {
-        $decoded = JWT::decode($jwt, $jwt_key, array('HS256'));
+        $decoded = JWT::decodeWithoutKey($jwt, array('HS256'));
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
@@ -30,7 +29,31 @@ if (!isset($_GET['token'])) {
         $show_form = false;
     } else {
         $user_id = $decoded->aud;
-        $result = json_decode(api(json_encode(array(
+        $reset_password = api(json_encode(array("cmd" => "resetPassword", "param" => array(
+            "user_id" => $user_id,
+        ))));
+        $reset_password = json_decode($reset_password, true);
+        if (isset($reset_password['error']['msg'])) {
+            $error = $reset_password['error']['msg'];
+            $show_form = false;
+            $show_login_button = true;
+        }
+        if (isset($_POST['liam3_reset_password'])) {
+            $reset_password = api(json_encode(array("cmd" => "resetPassword", "param" => array(
+                "user_id" => $user_id,
+                "password_new" => htmlspecialchars($_POST['liam3_User_password_new']),
+                "password_new_confirm" => htmlspecialchars($_POST['liam3_User_password_new_confirm'])
+            ))));
+            $reset_password = json_decode($reset_password, true);
+            if (isset($reset_password['error']['msg'])) {
+                $error = $reset_password['error']['msg'];
+            } else {
+                $success = $reset_password['message'];
+                $show_form = false;
+                $show_login_button = true;
+            }
+        }
+        /*$result = json_decode(api(json_encode(array(
             "cmd" => "read",
             "param" => array(
                 "table" => "liam3_user",
@@ -64,7 +87,7 @@ if (!isset($_GET['token'])) {
             } else {
                 $error = $result[0]['message'];
             }
-        }
+        }*/
     }
 }
 require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');

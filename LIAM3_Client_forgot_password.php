@@ -1,13 +1,30 @@
 <?php
 require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/LIAM3_Client_translate.inc.php');
-require_once(__DIR__ . '/inc/php-jwt-master/src/JWT.inc.php');
-use \Firebase\JWT\JWT;
 $show_form = true;
 
 if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
     $email_input = htmlspecialchars($_REQUEST['email']);
-    $user_email = json_decode(api(json_encode(array(
+    $excluded_ports = array(80, 443);
+    if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
+        $server_port = '';
+    } else {
+        $server_port = ':' . $_SERVER['SERVER_PORT'];
+    }
+    $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+    $forgot_password = api(json_encode(array("cmd" => "forgotPassword", "param" => array(
+        "liam3_url" => $liam3_url,
+        "email" => $email_input,
+    ))));
+    $forgot_password = json_decode($forgot_password, true);
+    if (isset($forgot_password['message'])) {
+        $success = $forgot_password['message'];
+        $show_form = false;
+    } else {
+        $error = $forgot_password['error']['msg'];
+    }
+
+    /*$user_email = json_decode(api(json_encode(array(
         "cmd" => "read",
         "param" => array(
             "table" => "liam3_user_email",
@@ -37,12 +54,6 @@ if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
             "exp" => time() + 10800
         );
 
-        /**
-         * IMPORTANT:
-         * You must specify supported algorithms for your application. See
-         * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40
-         * for a list of spec-compliant algorithms.
-         */
         $jwt = JWT::encode($jwt_token, $jwt_key);
 
         $result = api(json_encode(array(
@@ -75,13 +86,8 @@ if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
             mail($email_input, $subject, $msg);
             $success = 'Password reset link is sent to this e-mail address.';
             $show_form = false;
-            /*if (mail($email_input, $subject, $msg)) {
-                $success = 'Password reset link sent to email.';
-            } else {
-                $error = "The email can't be send";
-            }*/
         }
-    }
+    }*/
 }
 require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/templates/LIAM3_Client_forgot_password.inc.php');
