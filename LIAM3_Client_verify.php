@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.php');
@@ -9,7 +10,6 @@ if (!isset($_GET['token'])) {
     $error = 'No token.';
 } else {
     $jwt = $_GET['token'];
-    $jwt_key = AUTH_KEY;
 
     /**
      * You can add a leeway to account for when there is a clock skew times between
@@ -20,7 +20,7 @@ if (!isset($_GET['token'])) {
      */
     JWT::$leeway = 60; // $leeway in seconds
     try {
-        $decoded = JWT::decode($jwt, $jwt_key, array('HS256'));
+        $decoded = JWT::decodeWithoutKey($jwt, array('HS256'));
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
@@ -31,7 +31,7 @@ if (!isset($_GET['token'])) {
                 "table" => "liam3_email",
                 "row" => array(
                     "liam3_email_id" => $email_id,
-                    "state_id" => 14
+                    "state_id" => EMAIL_STATE_VERIFIED
                 )
             )
         )
@@ -49,5 +49,4 @@ if (!isset($_GET['token'])) {
         }
     }
 }
-require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/templates/LIAM3_Client_verify.inc.php');

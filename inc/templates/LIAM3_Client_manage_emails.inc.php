@@ -32,11 +32,11 @@
                             <div class="manage-email-fields float-right manage-email-text">Not verified</div>
                         </div>
 
-                    <?php elseif ($user_email['state_id']['state_id'] == 11) : ?>
+                    <?php elseif ($user_email['state_id'] == USER_EMAIL_STATE_USE) : ?>
                         <div class="col-lg-6 manage-email-fields"><?php echo $email_text; ?></div>
                             <div class="col-lg-3 manage-email-fields">
                                 <form method="post" action="" class="needs-validation">
-                                    <input type="hidden" name="email" value="<?php echo $user_email['liam3_user_email_id']; ?>" />
+                                    <input type="hidden" name="email" value="<?php echo $user_email['liam3_User_email_id']; ?>" />
                                     <?php if (count($selected_user_emails) > 1) : ?>
                                         <input type="submit" class="form-submit btn btn-primary" value="Do not use" name="liam3_unselect_email" data-toggle="tooltip" data-placement="top" title="Notifications and messages will not be sent to this e-mail address" />
                                     <?php else : ?>
@@ -49,7 +49,7 @@
                             <div class="col-lg-3 manage-email-fields">
                                 <form method="post" action="" class="needs-validation">
                                     <input type="hidden" name="email" value="<?php echo $email_id; ?>" />
-                                    <input name="delete_user_email_id" type="hidden" value="<?php echo $user_email['liam3_user_email_id']; ?>" />
+                                    <input name="delete_user_email_id" type="hidden" value="<?php echo $user_email['liam3_User_email_id']; ?>" />
                                     <input type="submit" class="form-submit btn btn-primary" value="Delete email" name="liam3_delete_email" />
                                 </form>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="col-lg-6 manage-email-fields"><?php echo $email_text; ?></div>
                         <div class="col-lg-3 manage-email-fields">
                             <form method="post" action="" class="needs-validation">
-                                <input type="hidden" name="email" value="<?php echo $user_email['liam3_user_email_id']; ?>" />
+                                <input type="hidden" name="email" value="<?php echo $user_email['liam3_User_email_id']; ?>" />
                                 <input type="submit" class="form-submit btn btn-primary" value="Use" name="liam3_select_email" data-toggle="tooltip" data-placement="top" title="Notifications and messages will be sent to this e-mail address" />
                             </form>
                         </div>
@@ -66,7 +66,7 @@
                             <div class="col-lg-3 manage-email-fields">
                                 <form method="post" action="" class="needs-validation">
                                     <input type="hidden" name="email" value="<?php echo $email_id; ?>">
-                                    <input name="delete_user_email_id" type="hidden" value="<?php echo $user_email['liam3_user_email_id']; ?>" />
+                                    <input name="delete_user_email_id" type="hidden" value="<?php echo $user_email['liam3_User_email_id']; ?>" />
                                     <input type="submit" class="form-submit btn btn-primary liam3-delete-email" value="Delete email" name="liam3_delete_email" data-toggle="tooltip" data-placement="top" title="This e-mail address will be removed" />
                                 </form>
                             </div>

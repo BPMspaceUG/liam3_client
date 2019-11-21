@@ -4,9 +4,12 @@
 <script type="text/javascript" src="js/LIAM3_Client_main.js"></script>
 <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/LIAM3_Client_main.css"/>
+
 <?php
-    define('EMAIL_STATE_NOT_VERIFIED', 1);
-    define('EMAIL_STATE_VERIFIED', 2);
-    define('EMAIL_STATE_DELETED', 3);
-    define('USER_EMAIL_STATE_USE', 13);
-    define('USER_STATE_COMPLETE', 10);
+define('EMAIL_STATE_NOT_VERIFIED', 1);
+define('EMAIL_STATE_VERIFIED', 2);
+define('EMAIL_STATE_DELETED', 4);
+define('USER_STATE_COMPLETE', 10);
+define('USER_STATE_UPDATE', 11);
+define('USER_EMAIL_STATE_USE', 13);
+define('USER_EMAIL_STATE_UNSELECTED', 14);

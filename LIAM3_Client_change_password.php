@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
 if (!isset($_SESSION['token'])) {
     header("Location: LIAM3_Client_login.php");
     exit();
@@ -11,7 +12,7 @@ if (!isset($_SESSION['token'])) {
                 "table" => "liam3_user",
                 "row" => array(
                     "liam3_User_id" => $_SESSION['user_id'],
-                    "state_id" => 9
+                    "state_id" => USER_STATE_UPDATE
                 )
             )
         )));
@@ -24,7 +25,7 @@ if (!isset($_SESSION['token'])) {
                     "liam3_User_password_old" => htmlspecialchars($_POST['liam3_User_password_old']),
                     "liam3_User_password_new" => htmlspecialchars($_POST['liam3_User_password_new']),
                     "liam3_User_password_new_confirm" => htmlspecialchars($_POST['liam3_User_password_new_confirm']),
-                    "state_id" => 8
+                    "state_id" => USER_STATE_COMPLETE
                 )
             )
         )));
@@ -35,6 +36,5 @@ if (!isset($_SESSION['token'])) {
             $error = $result[1]['message'];
         }
     }
-    require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
     require_once(__DIR__ . '/inc/templates/LIAM3_Client_change_password.inc.php');
 }
