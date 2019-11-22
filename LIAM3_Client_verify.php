@@ -24,8 +24,19 @@ if (!isset($_GET['token'])) {
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
-    $email_id = $decoded->aud;
+    $email = $decoded->aud;
     $result = api(json_encode(array(
+        "cmd" => "getEmailId",
+        "param" => array(
+            "email" => $email,
+        )
+    )));
+    $result = json_decode($result, true);
+    if (isset($result["error"])) {
+        $error = 'Email not found.';
+    } else {
+        $email_id = $result['email_id'];
+        $result = api(json_encode(array(
             "cmd" => "makeTransition",
             "param" => array(
                 "table" => "liam3_email",
@@ -34,18 +45,18 @@ if (!isset($_GET['token'])) {
                     "state_id" => EMAIL_STATE_VERIFIED
                 )
             )
-        )
-    ));
-    try {
-        $result = json_decode($result, true);
-    } catch (Exception $e) {
-        $error = $e->getMessage();
-    }
-    if (!isset($error)) {
-        if ($result && count($result) > 2) {
-            $success = 'Success.';
-        } else {
-            $error = 'This email is already verified or blocked.';
+        )));
+        try {
+            $result = json_decode($result, true);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+        if (!isset($error)) {
+            if ($result && count($result) > 2) {
+                $success = 'Success.';
+            } else {
+                $error = 'This email is already verified or blocked.';
+            }
         }
     }
 }

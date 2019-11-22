@@ -21,7 +21,7 @@ if (!isset($_GET['token'])) {
     JWT::$leeway = 60; // $leeway in seconds
     try {
         $decoded = JWT::decodeWithoutKey($jwt, array('HS256'));
-        $email_id = $decoded->aud;
+        $email = $decoded->aud;
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
@@ -30,7 +30,7 @@ if (!isset($_GET['token'])) {
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         $register = api(json_encode(array("cmd" => "register", "param" => array(
-            "email_id" => $email_id,
+            "email" => $email,
             "password" => $password,
             "firstname" => $firstname,
             "lastname" => $lastname
@@ -53,7 +53,7 @@ if (!isset($_GET['token'])) {
     if (!isset($_POST['register'])) {
         $register = api(json_encode(array("cmd" => "register", "param" => array(
             "check_email" => true,
-            "email_id" => $email_id
+            "email" => $email
         ))));
         $register = json_decode($register, true);
         if (isset($register['error']['msg'])) {
