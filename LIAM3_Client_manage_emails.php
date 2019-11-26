@@ -54,66 +54,68 @@ if (!isset($_SESSION['token']) && !isset($_GET['liam3_add_another_email'])) {
     }
     if (isset($_POST['liam3_select_email'])) {
         $user_email_id = htmlspecialchars($_POST['email']);
-        $result = api(json_encode(array(
-            "cmd" => "makeTransition",
+        $select_email = api(json_encode(array(
+            "cmd" => "selectEmail",
             "param" => array(
-                "table" => "liam3_user_email",
-                "row" => [
-                    "liam3_User_email_id" => $user_email_id,
-                    "state_id" => USER_EMAIL_STATE_USE
-                ]
+                "user_email_id" => $user_email_id
             )
         )));
-        $success = 'Email successfully selected.';
+        try {
+            $select_email = json_decode($select_email, true);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+        if (!isset($error)) {
+            if (isset($select_email['message'])) {
+                $success = $select_email['message'];
+            } else {
+                $error = $select_email['error']['msg'];
+            }
+        }
     }
     if (isset($_POST['liam3_unselect_email'])) {
         $user_email_id = htmlspecialchars($_POST['email']);
-        $result = api(json_encode(array(
-            "cmd" => "makeTransition",
+        $unselect_email = api(json_encode(array(
+            "cmd" => "unselectEmail",
             "param" => array(
-                "table" => "liam3_user_email",
-                "row" => [
-                    "liam3_User_email_id" => $user_email_id,
-                    "state_id" => USER_EMAIL_STATE_UNSELECTED
-                ]
+                "user_email_id" => $user_email_id
             )
         )));
-        $success = 'Email successfully unselected.';
+        try {
+            $unselect_email = json_decode($unselect_email, true);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+        if (!isset($error)) {
+            if (isset($unselect_email['message'])) {
+                $success = $unselect_email['message'];
+            } else {
+                $error = $unselect_email['error']['msg'];
+            }
+        }
     }
     if (isset($_POST['liam3_dont_unselect_email'])) {
         $error = "Minimum one e-email address must be used.";
     }
     if (isset($_POST['liam3_delete_email'])) {
         $email_id = htmlspecialchars($_POST['email']);
-        $user_email_id = htmlspecialchars($_POST['delete_user_email_id']);
         if (!isset($error)) {
-            $result = api(json_encode(array(
-                "cmd" => "read",
+            $delete_email = api(json_encode(array(
+                "cmd" => "deleteEmail",
                 "param" => array(
-                    "table" => "liam3_email",
-                    "filter" => '{"=":["liam3_email_id", '.$email_id.']}'
+                    "email_id" => $email_id
                 )
             )));
-            $result = json_decode($result, true);
-            $result = $result['records'];
-            if (!$result) $error = 'Wrong email';
+            try {
+                $delete_email = json_decode($delete_email, true);
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+            }
             if (!isset($error)) {
-                $result = api(json_encode(array(
-                    "cmd" => "makeTransition",
-                    "param" => array(
-                        "table" => "liam3_email",
-                        "row" => [
-                            "liam3_email_id" => $email_id,
-                            "liam3_email_text" => $result[0]['liam3_email_text'],
-                            "state_id" => EMAIL_STATE_DELETED
-                        ]
-                    )
-                )));
-                $result = json_decode($result, true);
-                if (isset($result['error'])) {
-                    $error = 'Something went wrong.';
+                if (isset($delete_email['message'])) {
+                    $success = $delete_email['message'];
                 } else {
-                    $success = $result[1]['message'];
+                    $error = $delete_email['error']['msg'];
                 }
             }
         }
@@ -123,7 +125,7 @@ if (!isset($_SESSION['token']) && !isset($_GET['liam3_add_another_email'])) {
         "cmd" => "read",
         "param" => array(
             "table" => "liam3_user_email",
-            "filter" => '{"=":["liam3_User_id", 1]}'
+            "filter" => '{"=":["liam3_User_id", '.$_SESSION["user_id"].'}'
         )
     ))), true);
     $selected_user_emails = array();

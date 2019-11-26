@@ -25,38 +25,22 @@ if (!isset($_GET['token'])) {
         $error = $e->getMessage();
     }
     $email = $decoded->aud;
-    $result = api(json_encode(array(
-        "cmd" => "getEmailId",
+    $set_email_to_verified = api(json_encode(array(
+        "cmd" => "setEmailToVerified",
         "param" => array(
             "email" => $email,
         )
     )));
-    $result = json_decode($result, true);
-    if (isset($result["error"])) {
-        $error = 'Email not found.';
-    } else {
-        $email_id = $result['email_id'];
-        $result = api(json_encode(array(
-            "cmd" => "makeTransition",
-            "param" => array(
-                "table" => "liam3_email",
-                "row" => array(
-                    "liam3_email_id" => $email_id,
-                    "state_id" => EMAIL_STATE_VERIFIED
-                )
-            )
-        )));
-        try {
-            $result = json_decode($result, true);
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-        }
-        if (!isset($error)) {
-            if ($result && count($result) > 2) {
-                $success = 'Success.';
-            } else {
-                $error = 'This email is already verified or blocked.';
-            }
+    try {
+        $set_email_to_verified = json_decode($set_email_to_verified, true);
+    } catch (Exception $e) {
+        $error = $e->getMessage();
+    }
+    if (!isset($error)) {
+        if (isset($set_email_to_verified['message'])) {
+            $success = $set_email_to_verified['message'];
+        } else {
+            $error = $set_email_to_verified['error']['msg'];
         }
     }
 }

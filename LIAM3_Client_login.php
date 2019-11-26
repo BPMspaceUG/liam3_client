@@ -57,6 +57,11 @@ if (isset($_POST['liam3_login'])) {
                         header("Location: " . $origin . "?token=" . $token);
                         exit();
                     } else {
+                        /*?>
+                        <script>
+                            sessionStorage.setItem("token", "<?php echo $token; ?>");
+                        </script>
+                        <?php*/
                         $_SESSION['token'] = $token;
                         $_SESSION['user_id'] = $user_id;
                     }
@@ -68,6 +73,18 @@ if (isset($_POST['liam3_login'])) {
     }
 }
 if (isset($_SESSION['token'])) {
+    /*$excluded_ports = array(80, 443);
+    if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
+        $server_port = '';
+    } else {
+        $server_port = ':' . $_SERVER['SERVER_PORT'];
+    }
+    $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+    ?>
+    <script>
+        window.location.href = "<?php echo $liam3_url . '/index.php'; ?>";
+    </script>
+    <?php*/
     header("Location: index.php");
     exit();
 } else {
