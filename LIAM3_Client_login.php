@@ -1,7 +1,7 @@
 <?php
+require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/liam3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/captcha/captcha.inc.php');
-require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.php');
@@ -57,13 +57,20 @@ if (isset($_POST['liam3_login'])) {
                         header("Location: " . $origin . "?token=" . $token);
                         exit();
                     } else {
-                        /*?>
+                        $excluded_ports = array(80, 443);
+                        if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
+                            $server_port = '';
+                        } else {
+                            $server_port = ':' . $_SERVER['SERVER_PORT'];
+                        }
+                        $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+                        ?>
                         <script>
                             sessionStorage.setItem("token", "<?php echo $token; ?>");
+                            window.location.href = "<?php echo $liam3_url . '/index.php'; ?>";
                         </script>
-                        <?php*/
-                        $_SESSION['token'] = $token;
-                        $_SESSION['user_id'] = $user_id;
+                        <?php
+                        exit();
                     }
                 } else {
                     $error = $login['error']['msg'];
@@ -72,8 +79,8 @@ if (isset($_POST['liam3_login'])) {
         }
     }
 }
-if (isset($_SESSION['token'])) {
-    /*$excluded_ports = array(80, 443);
+/*if (isset($_SESSION['token'])) {
+    $excluded_ports = array(80, 443);
     if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
         $server_port = '';
     } else {
@@ -84,9 +91,9 @@ if (isset($_SESSION['token'])) {
     <script>
         window.location.href = "<?php echo $liam3_url . '/index.php'; ?>";
     </script>
-    <?php*/
-    header("Location: index.php");
-    exit();
+    <?php
 } else {
     require_once(__DIR__ . '/inc/templates/LIAM3_Client_login.inc.php');
-}
+}*/
+if (isset($_GET['error'])) $error = "Token error: " . $_GET['error'];
+require_once(__DIR__ . '/inc/templates/LIAM3_Client_login.inc.php');

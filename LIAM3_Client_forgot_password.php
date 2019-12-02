@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/LIAM3_Client_translate.inc.php');
 $show_form = true;
@@ -23,5 +24,4 @@ if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
         $error = $forgot_password['error']['msg'];
     }
 }
-require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/templates/LIAM3_Client_forgot_password.inc.php');

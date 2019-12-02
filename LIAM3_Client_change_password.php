@@ -1,33 +1,25 @@
-<?php
-require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
-require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
-if (!isset($_SESSION['token'])) {
-    header("Location: LIAM3_Client_login.php");
-    exit();
-} else {
-    $token = $_SESSION['token'];
-    if (isset($_POST['liam3_change_password'])) {
-        $change_password = api(json_encode(array(
-            "cmd" => "changePassword",
-            "param" => array(
-                "user_id" => $_SESSION['user_id'],
-                "password_old" => htmlspecialchars($_POST['liam3_User_password_old']),
-                "password_new" => htmlspecialchars($_POST['liam3_User_password_new']),
-                "password_new_confirm" => htmlspecialchars($_POST['liam3_User_password_new_confirm'])
-            )
-        )));
-        try {
-            $change_password = json_decode($change_password, true);
-        } catch (Exception $e) {
-            $error = $e->getMessage();
+<?php require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+$change_password = isset($_POST['liam3_change_password']) ? $_POST['liam3_change_password'] : false;
+$password_old = isset($_POST['liam3_User_password_old']) ? htmlspecialchars($_POST['liam3_User_password_old']) : '';
+$password_new = isset($_POST['liam3_User_password_new']) ? htmlspecialchars($_POST['liam3_User_password_new']) : '';
+$password_confirm = isset($_POST['liam3_User_password_new_confirm']) ? htmlspecialchars($_POST['liam3_User_password_new_confirm']) : '';
+?>
+<script>
+    var token = sessionStorage.getItem('token');
+    $.ajax({
+        type: 'POST',
+        url: 'controller/LIAM3_Client_change_password.php',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", token);
+        },
+        data: {'token': true,
+            'liam3_change_password': '<?php echo $change_password; ?>',
+            'liam3_User_password_old': '<?php echo $password_old; ?>',
+            'liam3_User_password_new': '<?php echo $password_new; ?>',
+            'liam3_User_password_new_confirm': '<?php echo $password_confirm; ?>'
+        },
+        success: function (data){
+            $('body').append(data);
         }
-        if (!isset($error)) {
-            if (isset($change_password['message'])) {
-                $success = $change_password['message'];
-            } else {
-                $error = $change_password['error']['msg'];
-            }
-        }
-    }
-    require_once(__DIR__ . '/inc/templates/LIAM3_Client_change_password.inc.php');
-}
+    });
+</script>

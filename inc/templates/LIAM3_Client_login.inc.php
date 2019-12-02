@@ -5,10 +5,10 @@
                 <div class="alert alert-danger" role="alert"><?php echo $error; ?></div>
             <?php } ?>
             <h2>Login</h2>
-            <form method="post" action="" class="needs-validation">
+            <div method="post" action="" class="needs-validation">
                 <div class="form-group row">
                     <label for="email" class="col-lg-4 col-sm-6">E-Mail *</label>
-                    <input type="text" name="email" class="form-control col-lg-8" required />
+                    <input type="text" name="email" class="form-control col-lg-8 autofocus" required />
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-lg-4 col-sm-6">Password *</label>
@@ -26,9 +26,11 @@
                     <img src="<?php echo $captchaImage; ?>" class="captcha-image col-lg-4 col-sm-4" />
                     <input type="text" name="result" class="form-control col-lg-4 col-sm-8" autocomplete="off" required />
                 </div>
-                <a class="form-submit btn btn-primary" href="LIAM3_Client_forgot_password.php">Forgot password</a>
-                <a class="form-submit btn btn-primary" href="LIAM3_Client_self_register.php">Register</a>
-                <input type="submit" class="form-submit btn btn-primary" value="Login" name="liam3_login" />
+                <div class="float-right">
+                    <input type="submit" class="form-submit btn btn-primary" value="Login" name="liam3_login" />
+                    <a class="form-submit btn btn-primary" href="LIAM3_Client_self_register.php">Register</a>
+                    <a class="form-submit btn btn-primary" href="LIAM3_Client_forgot_password.php">Forgot password</a>
+                </div>
             </form>
         </div>
     </div>

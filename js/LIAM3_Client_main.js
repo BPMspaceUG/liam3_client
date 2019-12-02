@@ -4,6 +4,10 @@ $(document).ready( function () {
         keyboard: false
     });
 
+    $('.modal').on('shown.bs.modal', function() {
+        $('.autofocus').trigger('focus');
+    });
+
     $('#liam3_add_another_email').click(function(){
         $('#liam3_add_another_email_form').submit();
     });
