@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header_session.inc.php');
 /*$excluded_ports = array(80, 443);
 if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
 $server_port = '';
