@@ -5,7 +5,7 @@
                 <div class="alert alert-danger" role="alert"><?php echo $error; ?></div>
             <?php } ?>
             <h2>Login</h2>
-            <div method="post" action="" class="needs-validation">
+            <form method="post" action="" class="needs-validation">
                 <div class="form-group row">
                     <label for="email" class="col-lg-4 col-sm-6">E-Mail *</label>
                     <input type="text" name="email" class="form-control col-lg-8 autofocus" required />
