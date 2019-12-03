@@ -5,13 +5,14 @@ require_once(__DIR__ . '/inc/LIAM3_Client_translate.inc.php');
 $show_form = true;
 if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
     $email_input = htmlspecialchars($_REQUEST['email']);
-    $excluded_ports = array(80, 443);
+    /*$excluded_ports = array(80, 443);
     if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
         $server_port = '';
     } else {
         $server_port = ':' . $_SERVER['SERVER_PORT'];
     }
-    $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+    $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;*/
+    $liam3_url = LIAM3_URL;
     $forgot_password = api(json_encode(array("cmd" => "forgotPassword", "param" => array(
         "liam3_url" => $liam3_url,
         "email" => $email_input,

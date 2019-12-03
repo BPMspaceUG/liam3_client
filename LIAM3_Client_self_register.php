@@ -15,13 +15,14 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
         $error = 'Wrong Captcha.';
     } else {
         $email = htmlspecialchars($_REQUEST['email']);
-        $excluded_ports = array(80, 443);
+        /*$excluded_ports = array(80, 443);
         if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
             $server_port = '';
         } else {
             $server_port = ':' . $_SERVER['SERVER_PORT'];
         }
-        $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+        $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;*/
+        $liam3_url = LIAM3_URL;
         $origin = isset($_GET['origin']) ? htmlspecialchars($_GET['origin']) : '';
         $firstname = isset($_GET['firstname']) ? htmlspecialchars($_GET['firstname']) : '';
         $lastname = isset($_GET['lastname']) ? htmlspecialchars($_GET['lastname']) : '';

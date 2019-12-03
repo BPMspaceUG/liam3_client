@@ -5,13 +5,14 @@ require_once(__DIR__ . '/../inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/SignatureInvalidException.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/JWT.inc.php');
 use \Firebase\JWT\JWT;
-$excluded_ports = array(80, 443);
+/*$excluded_ports = array(80, 443);
 if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
     $server_port = '';
 } else {
     $server_port = ':' . $_SERVER['SERVER_PORT'];
 }
-$liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+$liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;*/
+$liam3_url = LIAM3_URL;
 if (!isset($_POST['token']) && !$_POST['liam3_get_request_add_another_email']) {
     ?>
     <script>
@@ -50,13 +51,6 @@ if (!isset($_POST['token']) && !$_POST['liam3_get_request_add_another_email']) {
     }
     if ($_POST['liam3_add_another_email']) {
         $email = $_POST['liam3_add_another_email'];
-        $excluded_ports = array(80, 443);
-        if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
-            $server_port = '';
-        } else {
-            $server_port = ':' . $_SERVER['SERVER_PORT'];
-        }
-        $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
         $add_another_email = api(json_encode(array("cmd" => "addAnotherEmail", "param" => array(
             "liam3_url" => $liam3_url,
             "user_id" => $user_id,
@@ -69,13 +63,6 @@ if (!isset($_POST['token']) && !$_POST['liam3_get_request_add_another_email']) {
             $success = $add_another_email['message'];
         }
         if ($_POST['liam3_get_request_add_another_email']) {
-            $excluded_ports = array(80, 443);
-            if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
-                $server_port = '';
-            } else {
-                $server_port = ':' . $_SERVER['SERVER_PORT'];
-            }
-            $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
             ?>
             <script>
                 window.location.href = "<?php echo 'http:' . $origin; ?>";
@@ -85,13 +72,6 @@ if (!isset($_POST['token']) && !$_POST['liam3_get_request_add_another_email']) {
     }
     if ($_POST['liam3_verify_email']) {
         $email_id = $_POST['email'];
-        $excluded_ports = array(80, 443);
-        if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
-            $server_port = '';
-        } else {
-            $server_port = ':' . $_SERVER['SERVER_PORT'];
-        }
-        $liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
         $verify_email = api(json_encode(array("cmd" => "verifyEmail", "param" => array(
             "liam3_url" => $liam3_url,
             "email_id" => $email_id

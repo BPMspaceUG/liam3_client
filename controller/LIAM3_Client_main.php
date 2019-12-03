@@ -5,13 +5,14 @@ require_once(__DIR__ . '/../inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/SignatureInvalidException.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/JWT.inc.php');
 use \Firebase\JWT\JWT;
-$excluded_ports = array(80, 443);
+/*$excluded_ports = array(80, 443);
 if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {
     $server_port = '';
 } else {
     $server_port = ':' . $_SERVER['SERVER_PORT'];
 }
-$liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;
+$liam3_url = 'http://' . $_SERVER['SERVER_NAME'] . $server_port;*/
+$liam3_url = LIAM3_URL;
 if (!isset($_POST['token'])) {
     ?>
     <script>
