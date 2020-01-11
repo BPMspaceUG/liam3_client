@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+<?php require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 $change_password = isset($_POST['liam3_change_password']) ? $_POST['liam3_change_password'] : false;
 $password_old = isset($_POST['liam3_User_password_old']) ? htmlspecialchars($_POST['liam3_User_password_old']) : '';
 $password_new = isset($_POST['liam3_User_password_new']) ? htmlspecialchars($_POST['liam3_User_password_new']) : '';

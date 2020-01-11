@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
-require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
-require_once(__DIR__ . '/inc/LIAM3_Client_translate.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_translate.inc.php');
 $show_form = true;
 if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
     $email_input = htmlspecialchars($_REQUEST['email']);

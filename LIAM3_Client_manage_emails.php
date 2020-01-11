@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+<?php require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 $add_another_email = isset($_REQUEST['liam3_add_another_email']) ? htmlspecialchars($_REQUEST['liam3_add_another_email']) : '';
 $get_request_add_another_email = isset($_GET['liam3_add_another_email']) ? htmlspecialchars($_GET['liam3_add_another_email']) : '';
 $get_request_user_id = isset($_GET['user_id']) ? htmlspecialchars($_GET['user_id']) : '';

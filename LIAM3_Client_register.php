@@ -1,6 +1,6 @@
 <?php
-require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
-require_once(__DIR__ . '/inc/LIAM3_Client_header_session.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
+require_once(__DIR__ . '/inc/liam3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.php');
