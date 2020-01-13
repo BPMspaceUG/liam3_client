@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/inc/LIAM3_Client_header.inc.php');
+<?php require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 $origin = isset($_GET['origin']) ? $_GET['origin'] : '';
 ?>
 <script>
