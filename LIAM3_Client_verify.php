@@ -44,4 +44,4 @@ if (!isset($_GET['token'])) {
         }
     }
 }
-require_once(__DIR__ . '/inc/templates/LIAM3_Client_verify.inc.php');
+require_once(__DIR__ . '/inc/templates/liam3_Client_verify.inc.php');

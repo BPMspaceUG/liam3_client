@@ -1,4 +1,4 @@
-<script type="text/javascript" src="js/LIAM3_Client_main.js"></script>
+<script type="text/javascript" src="js/liam3_Client_main.js"></script>
 <?php
 //session_start();
 require_once(__DIR__ . '/liam3_Client_api.secret.inc.php');

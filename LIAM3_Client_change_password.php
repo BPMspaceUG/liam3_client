@@ -8,7 +8,7 @@ $password_confirm = isset($_POST['liam3_User_password_new_confirm']) ? htmlspeci
     var token = sessionStorage.getItem('token');
     $.ajax({
         type: 'POST',
-        url: 'controller/LIAM3_Client_change_password.php',
+        url: 'controller/liam3_Client_change_password.php',
         beforeSend: function (xhr) {
             xhr.setRequestHeader ("Authorization", token);
         },

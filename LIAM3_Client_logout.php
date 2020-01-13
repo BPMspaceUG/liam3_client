@@ -12,7 +12,7 @@ $liam3_url = LIAM3_URL;
 ?>
 <script>
     sessionStorage.removeItem('token');
-    window.location.href = "<?php echo $liam3_url . '/LIAM3_Client_login.php'; ?>";
+    window.location.href = "<?php echo $liam3_url . '/liam3_Client_login.php'; ?>";
 </script>
 <?php
 exit();

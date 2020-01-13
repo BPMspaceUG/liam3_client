@@ -6,7 +6,7 @@
             <?php endif; ?>
             <?php if (isset($success)) : ?>
                 <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
-                <a class="form-submit btn btn-primary" href="LIAM3_Client_forgot_password.php?email=<?php echo $email_input; ?>">Resend Email</a>
+                <a class="form-submit btn btn-primary" href="liam3_Client_forgot_password.php?email=<?php echo $email_input; ?>">Resend Email</a>
             <?php endif; ?>
             <?php if ($show_form) : ?>
             <h2>Reset password</h2>

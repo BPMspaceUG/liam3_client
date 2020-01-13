@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../inc/LIAM3_Client_header_session.inc.php');
+require_once(__DIR__ . '/../inc/liam3_Client_header_session.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/BeforeValidException.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/ExpiredException.inc.php');
 require_once(__DIR__ . '/../inc/php-jwt-master/src/SignatureInvalidException.inc.php');
@@ -16,7 +16,7 @@ $liam3_url = LIAM3_URL;
 if (!isset($_POST['token'])) {
     ?>
     <script>
-        window.location.href = "<?php echo $liam3_url . '/LIAM3_Client_login.php'; ?>";
+        window.location.href = "<?php echo $liam3_url . '/liam3_Client_login.php'; ?>";
     </script>
     <?php
 } else {
@@ -25,7 +25,7 @@ if (!isset($_POST['token'])) {
         ?>
         <script>
             sessionStorage.removeItem('token');
-            window.location.href = "<?php echo $liam3_url . '/LIAM3_Client_login.php'; ?>";
+            window.location.href = "<?php echo $liam3_url . '/liam3_Client_login.php'; ?>";
         </script>
         <?php
         exit();
@@ -38,7 +38,7 @@ if (!isset($_POST['token'])) {
         ?>
         <script>
             sessionStorage.removeItem('token');
-            window.location.href = "<?php echo $liam3_url . '/LIAM3_Client_login.php?error=' . $error; ?>";
+            window.location.href = "<?php echo $liam3_url . '/liam3_Client_login.php?error=' . $error; ?>";
         </script>
         <?php
         exit();
@@ -65,5 +65,5 @@ if (!isset($_POST['token'])) {
             $error = $change_password['error']['msg'];
         }
     }
-    require_once(__DIR__ . '/../inc/templates/LIAM3_Client_change_password.inc.php');
+    require_once(__DIR__ . '/../inc/templates/liam3_Client_change_password.inc.php');
 }

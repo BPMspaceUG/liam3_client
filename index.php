@@ -5,7 +5,7 @@ $origin = isset($_GET['origin']) ? $_GET['origin'] : '';
     var token = sessionStorage.getItem('token');
     $.ajax({
         type: 'POST',
-        url: 'controller/LIAM3_Client_main.php',
+        url: 'controller/liam3_Client_main.php',
         beforeSend: function (xhr) {
             xhr.setRequestHeader ("Authorization", token);
         },

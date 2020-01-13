@@ -45,4 +45,4 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
     }
 }
 generateImage($expression->n1.' + '.$expression->n2.' =', $captchaImage);
-require_once(__DIR__ . '/inc/templates/LIAM3_Client_self_register.inc.php');
+require_once(__DIR__ . '/inc/templates/liam3_Client_self_register.inc.php');

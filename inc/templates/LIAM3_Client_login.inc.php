@@ -28,8 +28,8 @@
                 </div>
                 <div class="float-right">
                     <input type="submit" class="form-submit btn btn-primary" value="Login" name="liam3_login" />
-                    <a class="form-submit btn btn-primary" href="LIAM3_Client_self_register.php">Register</a>
-                    <a class="form-submit btn btn-primary" href="LIAM3_Client_forgot_password.php">Forgot password</a>
+                    <a class="form-submit btn btn-primary" href="liam3_Client_self_register.php">Register</a>
+                    <a class="form-submit btn btn-primary" href="liam3_Client_forgot_password.php">Forgot password</a>
                 </div>
             </form>
         </div>

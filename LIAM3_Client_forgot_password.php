@@ -25,4 +25,4 @@ if (isset($_POST['forgot_password']) || isset($_GET['email'])) {
         $error = $forgot_password['error']['msg'];
     }
 }
-require_once(__DIR__ . '/inc/templates/LIAM3_Client_forgot_password.inc.php');
+require_once(__DIR__ . '/inc/templates/liam3_Client_forgot_password.inc.php');

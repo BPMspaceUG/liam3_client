@@ -94,7 +94,7 @@ if (isset($_POST['liam3_login'])) {
     </script>
     <?php
 } else {
-    require_once(__DIR__ . '/inc/templates/LIAM3_Client_login.inc.php');
+    require_once(__DIR__ . '/inc/templates/liam3_Client_login.inc.php');
 }*/
 if (isset($_GET['error'])) $error = "Token error: " . $_GET['error'];
-require_once(__DIR__ . '/inc/templates/LIAM3_Client_login.inc.php');
+require_once(__DIR__ . '/inc/templates/liam3_Client_login.inc.php');

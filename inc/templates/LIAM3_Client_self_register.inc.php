@@ -7,8 +7,8 @@
             <?php if (isset($success)) : ?>
                 <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
                 <div class="row">
-                    <a class="form-submit btn btn-primary" href="LIAM3_Client_login.php">Log In</a>
-                    <a class="form-submit btn btn-primary" href="LIAM3_Client_self_register.php?email_id=<?php echo $email_id; ?>&email=<?php echo $email; ?>">Resend Email</a>
+                    <a class="form-submit btn btn-primary" href="liam3_Client_login.php">Log In</a>
+                    <a class="form-submit btn btn-primary" href="liam3_Client_self_register.php?email_id=<?php echo $email_id; ?>&email=<?php echo $email; ?>">Resend Email</a>
                 </div>
             <?php else : ?>
                 <h2>Register</h2>

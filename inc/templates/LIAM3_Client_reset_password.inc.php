@@ -8,7 +8,7 @@
                 <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
             <?php endif; ?>
             <?php if (isset($show_login_button)) : ?>
-                <a class="form-submit btn btn-primary" href="LIAM3_Client_login.php">Login</a>
+                <a class="form-submit btn btn-primary" href="liam3_Client_login.php">Login</a>
             <?php endif; ?>
             <?php if ($show_form) : ?>
                 <h2>Enter new password</h2>
