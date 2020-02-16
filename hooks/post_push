@@ -1,0 +1,13 @@
+#!/bin/bash
+# for docker hub to add multiple tags to docker repo 
+# https://windsock.io/automated-docker-image-builds-with-multiple-tags/
+set -euo pipefail
+
+# Parse image name for repo name
+tagStart=$(expr index "$IMAGE_NAME" :)
+repoName=${IMAGE_NAME:0:tagStart-1}
+GIT_COMMIT=git-$(git log -1 --format=%h)
+tag=$(echo "$GIT_COMMIT" | tr '[:upper:]' '[:lower:]')
+# Tag and push image for each additional tag
+docker tag $IMAGE_NAME ${repoName}:${tag}
+docker push ${repoName}:${tag}
