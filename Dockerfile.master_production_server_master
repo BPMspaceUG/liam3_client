@@ -1,2 +1,3 @@
 FROM bpmspace/docker_bpmspace_base:production_server_master
 COPY . /var/www/html/
+RUN echo touch /tmp/endentrypoint.log >> /usr/local/bin/docker-php-entrypoint
