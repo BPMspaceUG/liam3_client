@@ -63,7 +63,7 @@ if (!isset($_POST['token'])) {
         <?php
         exit();
     }
-    $user_id = $decoded->uid;
+    $user_id = $decoded->liam3_user_id;
     $user = json_decode(api(json_encode(array(
             "cmd" => "read",
             "param" => array(

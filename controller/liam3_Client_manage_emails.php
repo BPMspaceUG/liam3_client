@@ -47,7 +47,7 @@ if (!isset($_POST['token']) && !$_POST['liam3_get_request_add_another_email']) {
             <?php
             exit();
         }
-        $user_id = $decoded->uid;
+        $user_id = $decoded->liam3_user_id;
     }
     if ($_POST['liam3_add_another_email']) {
         $email = $_POST['liam3_add_another_email'];

@@ -51,7 +51,7 @@ if (isset($_POST['liam3_login'])) {
                     } catch (Exception $e) {
                         $error = $e->getMessage();
                     }
-                    $user_id = $decoded->uid;
+                    $user_id = $decoded->liam3_user_id;
                     if (isset($_GET['origin'])) {
                         $origin = $_GET['origin'];
                         header("Location: " . $origin . "?token=" . $token);
