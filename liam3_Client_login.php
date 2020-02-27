@@ -22,17 +22,17 @@ if (isset($_POST['liam3_login'])) {
             $captcha_result = (int)$_POST['result'];
             if (getExpressionResult($sentCode) !== $captcha_result) {
                 $error = 'Wrong Captcha.';
-                /*$login_attempt_info = 'Not Successful - ' . $email_input . ' - ' . $error;
-                $result = api(json_encode(array(
+                $login_attempt_info = 'Not Successful - ' . $email_input . ' - ' . $error;
+                api(json_encode(array(
                     "cmd" => "create",
                     "param" => array(
                         "table" => "liam3_loginattempts",
                         "row" => array(
-                            "liam3_loginattempts_time" => date('Y-m-d H:i'),
-                            "liam3_loginattempts_info" => $login_attempt_info
+                            "liam3_LoginAttempts_time" => date('Y-m-d H:i'),
+                            "liam3_LoginAttempts_info" => $login_attempt_info
                         )
                     )
-                )));*/
+                )));
             } else {
                 $error = false;
                 $login = json_decode(api(json_encode(array("cmd" => "login", "param" => array("email" => $email_input, "password" => $password_input)))), true);
