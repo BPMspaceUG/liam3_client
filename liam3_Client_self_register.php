@@ -2,6 +2,25 @@
 require_once(__DIR__ . '/inc/liam3_Client_header.inc.php');
 require_once(__DIR__ . '/inc/liam3_Client_header_session.inc.php');
 require_once(__DIR__ . '/inc/captcha/captcha.inc.php');
+
+//Brute force prevention
+$apc_captcha_key = "{$_SERVER['SERVER_NAME']}~captcha:{$_SERVER['REMOTE_ADDR']}";
+$apc_captcha_blocked_key = "{$_SERVER['SERVER_NAME']}~captcha-blocked:{$_SERVER['REMOTE_ADDR']}";
+$captcha_tries = (int)apcu_fetch($apc_captcha_key);
+if ($captcha_tries >= liam3_failed_captcha_max) {
+    header("HTTP/1.1 429 Too Many Requests");
+    echo "You've exceeded the number of captcha attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
+    exit();
+}
+$apc_login_key = "{$_SERVER['SERVER_NAME']}~login:{$_SERVER['REMOTE_ADDR']}";
+$apc_login_blocked_key = "{$_SERVER['SERVER_NAME']}~login-blocked:{$_SERVER['REMOTE_ADDR']}";
+$login_tries = (int)apcu_fetch($apc_login_key);
+if ($login_tries >= liam3_failed_login_max) {
+    header("HTTP/1.1 429 Too Many Requests");
+    echo "You've exceeded the number of login attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
+    exit();
+}
+
 if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['email_id'])) {
     if (!isset($_GET['origin']) && !isset($_GET['email_id'])) {
         if (file_exists($_POST['captcha-image'])) unlink($_POST['captcha-image']);
@@ -13,7 +32,12 @@ if (isset($_POST['self_register']) || isset($_GET['origin']) || isset($_GET['ema
     }
     if (!$captchaResult) {
         $error = 'Wrong Captcha.';
+        $captcha_blocked = (int)apcu_fetch($apc_captcha_blocked_key);
+        apcu_store($apc_captcha_key, $captcha_tries+1, pow(2, $captcha_blocked+1)*60);  # store tries for 2^(x+1) minutes: 2, 4, 8, 16, ...
+        apcu_store($apc_captcha_blocked_key, $captcha_blocked+1, 86400);  # store number of times blocked for 24 hours
     } else {
+        apcu_delete($apc_captcha_key);
+        apcu_delete($apc_captcha_blocked_key);
         $email = htmlspecialchars($_REQUEST['email']);
         /*$excluded_ports = array(80, 443);
         if (in_array($_SERVER['SERVER_PORT'], $excluded_ports)) {

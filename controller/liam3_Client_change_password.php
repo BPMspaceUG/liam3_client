@@ -43,7 +43,7 @@ if (!isset($_POST['token'])) {
         <?php
         exit();
     }
-    $user_id = $decoded->uid;
+    $user_id = $decoded->liam3_user_id;
     if ($_POST['liam3_change_password']) {
         $change_password = api(json_encode(array(
             "cmd" => "changePassword",

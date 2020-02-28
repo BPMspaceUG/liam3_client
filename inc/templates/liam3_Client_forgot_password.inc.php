@@ -15,6 +15,13 @@
                     <label for="email" class="col-lg-4 col-sm-6">E-Mail</label>
                     <input type="text" id="email" name="email" class="form-control col-lg-8" required />
                 </div>
+                <div class="form-group row">
+                    <input type="hidden" name="code" value="<?php echo $code; ?>" />
+                    <input type="hidden" name="captcha-image" value="<?php echo $captchaImage; ?>" />
+                    <label for="result" class="col-lg-4">Captcha</label>
+                    <img src="<?php echo $captchaImage; ?>" class="captcha-image col-lg-4 col-sm-4" />
+                    <input type="text" name="result" class="form-control col-lg-4 col-sm-8" autocomplete="off" required />
+                </div>
                 <input type="submit" value="OK" class="form-submit btn btn-primary" name="forgot_password" />
             </form>
             <?php endif; ?>
