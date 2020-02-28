@@ -1,6 +1,6 @@
 FROM bpmspace/docker_bpmspace_base:production_server_master
 COPY . /var/www/html/
-COPY scripts/liam3-client_entrypoint.sh /usr/local/bin/
-RUN chmod 700 /usr/local/bin/*.sh
-RUN ln -s /usr/local/bin/liam3-client_entrypoint.sh / # backwards compat
+#COPY scripts/liam3-client_entrypoint.sh /usr/local/bin/
+#RUN chmod 700 /usr/local/bin/*.sh
+#RUN ln -s /usr/local/bin/liam3-client_entrypoint.sh / # backwards compat
 #ENTRYPOINT ["liam3-entrypoint.sh"]
