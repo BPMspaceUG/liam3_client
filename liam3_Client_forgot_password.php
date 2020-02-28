@@ -6,12 +6,20 @@ require_once(__DIR__ . '/inc/liam3_Client_translate.inc.php');
 $show_form = true;
 
 //Brute force prevention
-$apc_captcha_key = "{$_SERVER['SERVER_NAME']}~reset-captcha:{$_SERVER['REMOTE_ADDR']}";
-$apc_captcha_blocked_key = "{$_SERVER['SERVER_NAME']}~reset-captcha-blocked:{$_SERVER['REMOTE_ADDR']}";
+$apc_captcha_key = "{$_SERVER['SERVER_NAME']}~captcha:{$_SERVER['REMOTE_ADDR']}";
+$apc_captcha_blocked_key = "{$_SERVER['SERVER_NAME']}~captcha-blocked:{$_SERVER['REMOTE_ADDR']}";
 $captcha_tries = (int)apcu_fetch($apc_captcha_key);
 if ($captcha_tries >= liam3_failed_captcha_max) {
     header("HTTP/1.1 429 Too Many Requests");
     echo "You've exceeded the number of captcha attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
+    exit();
+}
+$apc_login_key = "{$_SERVER['SERVER_NAME']}~login:{$_SERVER['REMOTE_ADDR']}";
+$apc_login_blocked_key = "{$_SERVER['SERVER_NAME']}~login-blocked:{$_SERVER['REMOTE_ADDR']}";
+$login_tries = (int)apcu_fetch($apc_login_key);
+if ($login_tries >= liam3_failed_login_max) {
+    header("HTTP/1.1 429 Too Many Requests");
+    echo "You've exceeded the number of login attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
     exit();
 }
 
