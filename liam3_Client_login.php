@@ -8,6 +8,25 @@ require_once(__DIR__ . '/inc/php-jwt-master/src/SignatureInvalidException.inc.ph
 require_once(__DIR__ . '/inc/php-jwt-master/src/JWT.inc.php');
 use \Firebase\JWT\JWT;
 generateImage($expression->n1.' + '.$expression->n2.' =', $captchaImage);
+
+//Brute force prevention
+$apc_login_key = "{$_SERVER['SERVER_NAME']}~login:{$_SERVER['REMOTE_ADDR']}";
+$apc_login_blocked_key = "{$_SERVER['SERVER_NAME']}~login-blocked:{$_SERVER['REMOTE_ADDR']}";
+$apc_captcha_key = "{$_SERVER['SERVER_NAME']}~captcha:{$_SERVER['REMOTE_ADDR']}";
+$apc_captcha_blocked_key = "{$_SERVER['SERVER_NAME']}~captcha-blocked:{$_SERVER['REMOTE_ADDR']}";
+$login_tries = (int)apcu_fetch($apc_login_key);
+if ($login_tries >= liam3_failed_login_max) {
+    header("HTTP/1.1 429 Too Many Requests");
+    echo "You've exceeded the number of login attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
+    exit();
+}
+$captcha_tries = (int)apcu_fetch($apc_captcha_key);
+if ($captcha_tries >= liam3_failed_captcha_max) {
+    header("HTTP/1.1 429 Too Many Requests");
+    echo "You've exceeded the number of captcha attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
+    exit();
+}
+
 if (isset($_POST['liam3_login'])) {
     if (file_exists($_POST['captcha-image'])) unlink($_POST['captcha-image']);
     if (!$_POST['email'] || !$_POST['password']) {
@@ -33,8 +52,13 @@ if (isset($_POST['liam3_login'])) {
                         )
                     )
                 )));
+                $captcha_blocked = (int)apcu_fetch($apc_captcha_blocked_key);
+                apcu_store($apc_captcha_key, $captcha_tries+1, pow(2, $captcha_blocked+1)*60);  # store tries for 2^(x+1) minutes: 2, 4, 8, 16, ...
+                apcu_store($apc_captcha_blocked_key, $captcha_blocked+1, 86400);  # store number of times blocked for 24 hours
             } else {
                 $error = false;
+                apcu_delete($apc_captcha_key);
+                apcu_delete($apc_captcha_blocked_key);
                 $login = json_decode(api(json_encode(array("cmd" => "login", "param" => array("email" => $email_input, "password" => $password_input)))), true);
                 if (isset($login['login_valid']) && $login['login_valid']) {
                     $token = $login['token'];
@@ -52,6 +76,8 @@ if (isset($_POST['liam3_login'])) {
                         $error = $e->getMessage();
                     }
                     $user_id = $decoded->liam3_user_id;
+                    apcu_delete($apc_login_key);
+                    apcu_delete($apc_login_blocked_key);
                     if (isset($_GET['origin'])) {
                         $origin = $_GET['origin'];
                         header("Location: " . $origin . "?token=" . $token);
@@ -75,6 +101,9 @@ if (isset($_POST['liam3_login'])) {
                     }
                 } else {
                     $error = $login['error']['msg'];
+                    $login_blocked = (int)apcu_fetch($apc_login_blocked_key);
+                    apcu_store($apc_login_key, $login_tries+1, pow(2, $login_blocked+1)*60);  # store tries for 2^(x+1) minutes: 2, 4, 8, 16, ...
+                    apcu_store($apc_login_blocked_key, $login_blocked+1, 86400);  # store number of times blocked for 24 hours
                 }
             }
         }
